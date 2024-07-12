@@ -232,18 +232,19 @@ console.log(car.start("start right now")); //Hurray!My car is start right now
 
 //                                  "NESTED OBJECTS   
 
-let product ={
+let product =[{
     name: "Laptop",
     color: {
         color1: "Black",
         color2: "Grey",
-    }
-    price:50000 
+    },
+    price:50000, 
 }
+]
 
-console.log(product.color.color1);//black
-console.log(product.color.color2); //Grey
-console.log(product.price); // 50000
+console.log(product[0].color.color1);//black
+console.log(product[0].color.color2); //Grey
+console.log(product[0].price); // 50000
 
 
 

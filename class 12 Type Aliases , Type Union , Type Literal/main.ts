@@ -34,6 +34,7 @@ type MySelfDataType = {
     }
 
     console.log(MySelf.passion); //Developer
+
     console.log(MySelf.qualification);//Undergraduate
     
     
@@ -41,19 +42,23 @@ type MySelfDataType = {
     //Print human and animal with type alias
 
     type Human = string
+
     type Animal = string
 
-    let human                        :Human         =           "Ahsan"
-        //Javascript variable         // Type alias
+    let human:Human="Ahsan"                    //Human is type alias and human is javascript variable
+        
 
-        let animal                   :Animal        =           "Lion"
+    let animal:Animal="Lion"                   //animal is javascript variable and Animal is type alias
         //Javascript variable         //  Type alias
 
         console.log(animal); //Lion
+        
         console.log(human);  //Ahsan
 
 
-        //TYPE ALIAS AND NESTED OBJECT WITH FUNCTION
+
+
+        //TYPE ALIAS AND  OBJECT WITH FUNCTION
 
     type ItCoursesSlotDatatype =[{
         session: string,
@@ -64,18 +69,132 @@ type MySelfDataType = {
     let ItcoursesSlot:ItCoursesSlotDatatype  = [
         {
 
-            session: "3 Session in one day",
+            session: "2 Session in one day",
         
-             MondayToSundaySession: (start:string , end:string) =>{
-                console.log(` first session of day start from${start} and end at ${end}`);
-                console.log(` second session of day start from${start} and end at ${end}`);
+             MondayToSundaySession: (FirstSession , SecondSession:string) =>{
+
+                console.log(` Timing of first session is ${FirstSession} and timing of second session is  ${SecondSession}`); 
                 
-             
             },
         }]
 
-        console.log(ItcoursesSlot[0].MondayToSundaySession ("2pm"  , "5pm"));
-        console.log(ItcoursesSlot[0].MondayToSundaySession("7pm" , "10pm"));
+        console.log(ItcoursesSlot[0].session); //2 Session in one day
+        
+        console.log(ItcoursesSlot[0].MondayToSundaySession ("2 to 5pm" , "7 to 10pm"));//Timing of first session is 2 to 5pm and timing of second session is  7 to 10pm
+
+
+        //TYPE ALIAS WITH SIMPLE OBJECT
+
+        type RealmeDatatype  = [{
+                name: string,
+                price: number,
+                color: string,
+                ram: number,
+              
+        } 
+    ]
+        let Realme:RealmeDatatype  =[{
+            name: "Realme",
+            price: 20000,
+            color: "Sea Green",
+            ram: 4,
+            
+        }
+    ]
+
+        console.log(Realme[0].price); //20000
+        Realme[0].name = "Realme5i"; //Updated Value though indexing
+        console.log(Realme); //[ { name: 'Realme5i', price: 20000, color: 'Sea Green', ram: 4 } ]
+
+        //TYPE ALIAS AND NESTED OBJECT
+        type ICECREAM =[{
+            name: {
+                name1: string,
+                name2: string,
+            }
+            flavor: "Chocolate" | "Vanilla" // Type literal
+            price: number[],
+        }
+        ]
+        
+        let icecream:ICECREAM = [ {
+            
+            
+             name:{
+                name1: "Chocolate",
+                name2: "Vanilla",
+             }
+             flavor: ["Chocolate" , "Vanilla"],
+             price: [100, 200],
+        }
+        ]
+
+        
+          console.log(icecream[0].flavor); //[ 'Chocolate', 'Vanilla' ]
+            
+        
+        
+                
+
+
+        //TYPE ALIAS IN ARROW FUNCTION
+        type Userpassword = number;
+        let userpassword =(passward:Userpassword) =>{
+                console.log(`This is the password of my client ${passward}`);
+
+        }
+
+        userpassword(12345678);//This is the password of my client 12345678
+
+
+
+        //                                    "TYPE UNION"
+        //This feature gives multiple 
+        //number | string | boolean     this mean that the datatype either will be number or string or boolean
+
+        let digit: string | number  
+        digit = 123456789;
+        digit = "123456789";
+        digit = true; //This will not run because we dont assign boolean above we only assign  string | number
+        
+        let digit2: string | string[] | boolean[]  =  ["Football" , "Cricket"]
+        console.log(digit2); //[ 'Football', 'Cricket' ]
+        digit2  = [true , true , false];
+        console.log(digit2); //[ true, true, false ]
+        // digit2 = [12 , 23] //Error
+
+        
+        //                                       "TYPE LITERAL"
+        //When you know the value 
+        //The value of union type literal is always in string
+        let days: ("Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday" | "Saturday" | "Sunday") = "Wednesday";
+
+        //("Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday" | "Saturday" | "Sunday") This is union type literal 
+        console.log(days); //Wednesday
+
+        let WinterMonths : "November" | "December" | "January" | "Feb" ="December"
+        
+        console.log(WinterMonths); //December
+
+    
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        
 
 
         
